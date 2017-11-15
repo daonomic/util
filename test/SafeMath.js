@@ -1,5 +1,5 @@
-const expectThrow = require('./helpers/expectThrow');
 var SafeMathMock = artifacts.require("SafeMathMock.sol");
+var expectThrow = require('./helpers/expectThrow');
 
 contract('SafeMath', function(accounts) {
 
