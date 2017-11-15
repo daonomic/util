@@ -1,6 +1,6 @@
 {
   "name": "daonomic-util",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Util contracts for daonomic platform",
   "main": "truffle.js",
   "directories": {
