@@ -1,6 +1,6 @@
 {
   "name": "@daonomic/util",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Util contracts for daonomic platform",
   "main": "truffle.js",
   "directories": {
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/daonomic/util/issues"
   },
-  "homepage": "https://github.com/daonomic/util"
+  "homepage": "https://github.com/daonomic/util",
+  "devDependencies": {
+    "@daonomic/tests-common": "~0.1"
+  }
 }

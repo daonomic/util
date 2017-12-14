@@ -1,5 +1,5 @@
 var OwnableImpl = artifacts.require("OwnableImpl.sol")
-var expectThrow = require('./helpers/expectThrow');
+var expectThrow = require('@daonomic/tests-common').expectThrow;
 
 contract('OwnableImpl', function(accounts) {
   let ownable;

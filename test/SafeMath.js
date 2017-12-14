@@ -1,5 +1,5 @@
 var SafeMathMock = artifacts.require("SafeMathMock.sol");
-var expectThrow = require('./helpers/expectThrow');
+var expectThrow = require('@daonomic/tests-common').expectThrow;
 
 contract('SafeMath', function(accounts) {
 
