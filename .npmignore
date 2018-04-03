@@ -4,3 +4,4 @@ migrations
 test
 build
 *.sh
+truffle.js

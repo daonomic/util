@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.21;
 
 import "./Secured.sol";
 import "./Ownable.sol";
@@ -13,7 +13,7 @@ contract SecuredImpl is Ownable, Secured {
 
 	function transferRole(string role, address to) onlyOwner public {
 		require(to != address(0));
-		RoleTransferred(users[role], to, role);
+		emit RoleTransferred(users[role], to, role);
 		users[role] = to;
 	}
 }
