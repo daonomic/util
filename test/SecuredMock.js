@@ -10,17 +10,61 @@ contract('SecuredImpl', function(accounts) {
     secured = await Secured.new();
   });
 
-  it('should let owner change roles', async function() {
+  async function initRoles(secured) {
     await secured.transferRole("user", accounts[1]);
     await secured.transferRole("operator", accounts[2]);
     assert.equal(await secured.getRole("user"), accounts[1]);
+  }
+
+  it('should let invoke action1 only to operator', async function() {
+    await initRoles(secured);
+    await secured.action1({from: accounts[2]});
+    await expectThrow(
+        secured.action1({from: accounts[1]})
+    );
+    await expectThrow(
+        secured.action1({from: accounts[0]})
+    );
+    await expectThrow(
+        secured.action1({from: accounts[3]})
+    );
+  });
+
+  it('should let invoke action2 only to user', async function() {
+    await initRoles(secured);
     await secured.action2({from: accounts[1]});
     await expectThrow(
         secured.action2({from: accounts[2]})
     );
-    await secured.action1({from: accounts[2]});
     await expectThrow(
-        secured.action1({from: accounts[1]})
+        secured.action2({from: accounts[0]})
+    );
+    await expectThrow(
+        secured.action2({from: accounts[3]})
+    );
+  });
+
+  it('should let invoke action3 only to owner or user', async function() {
+    await initRoles(secured);
+    await secured.action3({from: accounts[1]});
+    await secured.action3({from: accounts[0]});
+    await expectThrow(
+        secured.action3({from: accounts[2]})
+    );
+    await expectThrow(
+        secured.action3({from: accounts[3]})
+    );
+  });
+
+  it('should let invoke action4 only to user or operator', async function() {
+    await initRoles(secured);
+    await secured.action4({from: accounts[1]});
+    await secured.action4({from: accounts[2]});
+    await expectThrow(
+        secured.action4({from: accounts[0]})
+    );
+    await expectThrow(
+        secured.action4({from: accounts[3]})
     );
   });
 

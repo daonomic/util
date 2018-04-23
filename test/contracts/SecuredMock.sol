@@ -10,4 +10,12 @@ contract SecuredMock is SecuredImpl, OwnableImpl {
 	function action2() only("user") public {
 
 	}
+
+	function action3() ownerOr("user") public {
+
+	}
+
+	function action4() any("user", "operator") public {
+
+	}
 }
