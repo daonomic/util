@@ -1,5 +1,4 @@
-pragma solidity ^0.4.21;
-
+pragma solidity ^0.4.23;
 
 import "./Ownable.sol";
 
@@ -17,7 +16,7 @@ contract OwnableImpl is Ownable {
      * @dev The Ownable constructor sets the original `owner` of the contract to the sender
      * account.
      */
-    function OwnableImpl() public {
+    constructor() public {
         owner = msg.sender;
     }
 
