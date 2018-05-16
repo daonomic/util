@@ -23,8 +23,8 @@ contract OwnableImpl is Ownable {
     /**
      * @dev Throws if called by any account other than the owner.
      */
-    function checkOwner() internal {
-        require(msg.sender == owner);
+    function checkOwner(address _address) public {
+        require(_address == owner);
     }
 
     /**

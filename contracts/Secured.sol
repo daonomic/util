@@ -15,7 +15,7 @@ contract Secured is Ownable {
     modifier ownerOr(string role) {
         bool roleMatches = msg.sender == getRole(role);
         if (!roleMatches) {
-            checkOwner();
+            checkOwner(msg.sender);
         }
         _;
     }

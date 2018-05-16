@@ -6,9 +6,9 @@ pragma solidity ^0.4.21;
  */
 contract Ownable {
     modifier onlyOwner() {
-        checkOwner();
+        checkOwner(msg.sender);
         _;
     }
 
-    function checkOwner() internal;
+    function checkOwner(address _address) public;
 }
