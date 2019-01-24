@@ -35,7 +35,7 @@ contract('OwnableImpl', function(accounts) {
     let originalOwner = await ownable.owner();
 
     await expectThrow(
-        ownable.transferOwnership(null, {from: originalOwner})
+        ownable.transferOwnership("0x0000000000000000000000000000000000000000", {from: originalOwner})
     );
   });
 });

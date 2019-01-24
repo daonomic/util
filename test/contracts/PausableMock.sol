@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.5.0;
 
 
 import '../../contracts/Pausable.sol';
@@ -9,7 +9,7 @@ contract PausableMock is Pausable, OwnableImpl {
     bool public drasticMeasureTaken;
     uint256 public count;
 
-    function PausableMock() public {
+    constructor() public {
         drasticMeasureTaken = false;
         count = 0;
     }

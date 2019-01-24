@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.5.0;
 
 import "./Ownable.sol";
 
@@ -7,12 +7,12 @@ import "./Ownable.sol";
  * @dev Adds only(role) modifier. Subcontracts should implement checkRole to check if caller is allowed to do action.
  */
 contract Secured is Ownable {
-    modifier only(string role) {
+    modifier only(string memory role) {
         require(msg.sender == getRole(role));
         _;
     }
 
-    modifier ownerOr(string role) {
+    modifier ownerOr(string memory role) {
         bool roleMatches = msg.sender == getRole(role);
         if (!roleMatches) {
             checkOwner(msg.sender);
@@ -20,10 +20,10 @@ contract Secured is Ownable {
         _;
     }
 
-    modifier any(string role1, string role2) {
+    modifier any(string memory role1, string memory role2) {
         require(msg.sender == getRole(role1) || msg.sender == getRole(role2));
         _;
     }
 
-    function getRole(string role) constant public returns (address);
+    function getRole(string memory role) view public returns (address);
 }
